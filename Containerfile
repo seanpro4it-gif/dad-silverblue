@@ -4,9 +4,13 @@ ARG BASE_IMAGE=ghcr.io/ublue-os/silverblue-main:latest
 FROM ${BASE_IMAGE}
 
 # Windows-like taskbar + Start menu (same extensions as this machine), tray icons
-RUN dnf -y install \
+# and Tailscale so you can help remotely
+RUN curl -fsSL -o /etc/yum.repos.d/tailscale.repo https://pkgs.tailscale.com/stable/fedora/tailscale.repo \
+    && dnf -y install \
         gnome-shell-extension-dash-to-panel \
         gnome-shell-extension-appindicator \
+        tailscale \
+    && systemctl enable tailscaled.service \
     && dnf clean all \
     && rm -rf /run/dnf /var/log/dnf5.log /var/cache/libdnf5 /var/lib/dnf /var/cache/ldconfig/aux-cache
 
