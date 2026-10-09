@@ -1,0 +1,14 @@
+[Unit]
+Description=Install Dad's apps (first boot)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=!/var/lib/dad-firstboot/done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/dad-firstboot-flatpaks
+Restart=on-failure
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

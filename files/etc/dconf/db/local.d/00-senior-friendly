@@ -1,0 +1,53 @@
+# Senior-friendly defaults. These are DEFAULTS: Dad (or you) can still change them in Settings.
+
+[org/gnome/shell]
+enabled-extensions=['dash-to-panel@jderose9.github.com', 'arcmenu@arcmenu.com', 'appindicatorsupport@rgcjonas.gmail.com']
+favorite-apps=['com.google.Chrome.desktop', 'org.gnome.Nautilus.desktop', 'org.libreoffice.LibreOffice.writer.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Loupe.desktop']
+
+[org/gnome/shell/extensions/arcmenu]
+menu-layout='redmond'
+
+[org/gnome/shell/extensions/dash-to-panel]
+panel-sizes='{"0":56}'
+appicon-margin=6
+show-favorites=true
+dot-style-focused='METRO'
+dot-style-unfocused='METRO'
+
+# Bigger text and cursor
+[org/gnome/desktop/interface]
+text-scaling-factor=1.25
+cursor-size=48
+show-battery-percentage=true
+clock-show-date=true
+clock-show-weekday=true
+enable-hot-corners=false
+locate-pointer=true
+
+# Slower double-click, Windows-style scrolling, tap-to-click
+[org/gnome/desktop/peripherals/mouse]
+double-click=600
+natural-scroll=false
+
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+natural-scroll=false
+disable-while-typing=true
+
+# Don't blank the screen or lock too quickly
+[org/gnome/desktop/session]
+idle-delay=uint32 900
+
+[org/gnome/desktop/screensaver]
+lock-delay=uint32 300
+
+# Fewer surprises
+[org/gnome/desktop/notifications]
+show-in-lock-screen=false
+
+[org/gnome/mutter]
+edge-tiling=false
+
+[org/gnome/software]
+download-updates=true
+download-updates-notify=false

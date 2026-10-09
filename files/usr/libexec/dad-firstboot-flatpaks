@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+# Installs Dad's apps on first boot (Flatpaks live in /var, so they can't be baked into the image).
+# Trimmed from this machine's list: dropped Sunshine (remote game streaming), Extension Manager,
+# Logs, Characters, Fonts, Disk Usage, Connections, Media Writer, Xournal++, PDF Arranger.
+set -euo pipefail
+
+APPS=(
+    com.google.Chrome
+    org.libreoffice.LibreOffice
+    org.gnome.Calculator
+    org.gnome.Calendar
+    org.gnome.Contacts
+    org.gnome.clocks
+    org.gnome.Weather
+    org.gnome.Maps
+    org.gnome.Loupe
+    org.gnome.Papers
+    org.gnome.TextEditor
+    org.gnome.Snapshot
+)
+
+flatpak remote-add --system --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --system --noninteractive --or-update flathub "${APPS[@]}"
+mkdir -p /var/lib/dad-firstboot && touch /var/lib/dad-firstboot/done
